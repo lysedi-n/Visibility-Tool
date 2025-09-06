@@ -105,7 +105,7 @@ function BrandMonitorContent({ session }: { session: any }) {
           <div className="p-4 border-b">
             <Button
               onClick={handleNewAnalysis}
-              className="w-full btn-firecrawl-orange"
+              className="w-full btn-firecrawl-red"
             >
               <Plus className="w-4 h-4 mr-2" />
               New Analysis

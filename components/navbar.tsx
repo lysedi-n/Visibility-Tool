@@ -48,8 +48,8 @@ export function Navbar() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image
-                src="/firecrawl-logo-with-fire.webp"
-                alt="Firecrawl"
+                src="/logo.svg"
+                alt="We Love SEO"
                 width={120}
                 height={25}
                 priority
@@ -89,7 +89,7 @@ export function Navbar() {
               <>
                 <Link
                   href="/dashboard"
-                  className="btn-firecrawl-orange inline-flex items-center justify-center whitespace-nowrap rounded-[10px] text-sm font-medium transition-all duration-200 h-8 px-3"
+                  className="btn-firecrawl-red inline-flex items-center justify-center whitespace-nowrap rounded-[10px] text-sm font-medium transition-all duration-200 h-8 px-3"
                 >
                   Dashboard
                 </Link>
@@ -111,7 +111,7 @@ export function Navbar() {
                 </Link>
                 <Link 
                   href="/register"
-                  className="btn-firecrawl-orange inline-flex items-center justify-center whitespace-nowrap rounded-[10px] text-sm font-medium transition-all duration-200 h-8 px-3"
+                  className="btn-firecrawl-red inline-flex items-center justify-center whitespace-nowrap rounded-[10px] text-sm font-medium transition-all duration-200 h-8 px-3"
                 >
                   Register
                 </Link>
