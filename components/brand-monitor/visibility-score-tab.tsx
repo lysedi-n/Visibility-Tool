@@ -34,7 +34,7 @@ export function VisibilityScoreTab({
             </div>
             {/* Visibility Score in top right */}
             <div className="text-right">
-              <p className="text-3xl font-bold text-orange-600">{brandData.visibilityScore}%</p>
+              <p className="text-3xl font-bold text-red-600">{brandData.visibilityScore}%</p>
               <p className="text-xs text-gray-500 mt-1">Overall Score</p>
             </div>
           </div>
@@ -47,9 +47,9 @@ export function VisibilityScoreTab({
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <defs>
-                      <linearGradient id="orangeGradient" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stopColor="#fb923c" />
-                        <stop offset="100%" stopColor="#ea580c" />
+                      <linearGradient id="redGradient" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stopColor="#f87171" />
+                        <stop offset="100%" stopColor="#c00022" />
                       </linearGradient>
                       <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
                         <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
@@ -83,9 +83,9 @@ export function VisibilityScoreTab({
                       {competitors.slice(0, 8).map((competitor, idx) => (
                         <Cell 
                           key={`cell-${idx}`} 
-                          fill={competitor.isOwn ? 'url(#orangeGradient)' : 
+                          fill={competitor.isOwn ? 'url(#redGradient)' : 
                             ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b', '#6366f1', '#14b8a6', '#f43f5e'][idx % 8]}
-                          stroke={competitor.isOwn ? '#ea580c' : 'none'}
+                          stroke={competitor.isOwn ? '#c00022' : 'none'}
                           strokeWidth={competitor.isOwn ? 2 : 0}
                         />
                       ))}
@@ -128,7 +128,7 @@ export function VisibilityScoreTab({
                 const faviconUrl = competitorData?.url ? 
                   `https://www.google.com/s2/favicons?domain=${competitorData.url}&sz=64` : null;
                 
-                const color = competitor.isOwn ? '#ea580c' : 
+                const color = competitor.isOwn ? '#c00022' : 
                   ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b', '#6366f1', '#14b8a6', '#f43f5e'][idx % 8];
                 
                 return (
@@ -152,14 +152,14 @@ export function VisibilityScoreTab({
                           />
                         ) : null}
                         <div className={`w-full h-full ${
-                          competitor.isOwn ? 'bg-orange-500' : 'bg-gray-300'
+                          competitor.isOwn ? 'bg-red-500' : 'bg-gray-300'
                         } flex items-center justify-center text-white text-[8px] font-bold rounded`} 
                         style={{ display: faviconUrl ? 'none' : 'flex' }}>
                           {competitor.name.charAt(0)}
                         </div>
                       </div>
                       <span className={`text-sm truncate ${
-                        competitor.isOwn ? 'font-semibold text-orange-600' : 'text-gray-700'
+                        competitor.isOwn ? 'font-semibold text-red-600' : 'text-gray-700'
                       }`}>
                         {competitor.name}
                       </span>

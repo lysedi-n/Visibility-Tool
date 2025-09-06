@@ -30,7 +30,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-400">
               <Link
                 href="/brand-monitor"
-                className="btn-firecrawl-orange inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] text-base font-medium transition-all duration-200 h-12 px-8"
+                className="btn-firecrawl-red inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] text-base font-medium transition-all duration-200 h-12 px-8"
               >
                 Start Brand Analysis
               </Link>
@@ -121,8 +121,8 @@ export default function Home() {
             </div>
 
             {/* Pro - Featured */}
-            <div className="bg-white p-8 rounded-[20px] border-2 border-orange-500 relative animate-fade-in-up animation-delay-600 hover:scale-105 transition-all duration-200">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+            <div className="bg-white p-8 rounded-[20px] border-2 border-red-500 relative animate-fade-in-up animation-delay-600 hover:scale-105 transition-all duration-200">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-1 rounded-full text-sm font-medium">
                 Most Popular
               </div>
               <h3 className="text-2xl font-bold mb-2">Pro</h3>
@@ -153,7 +153,7 @@ export default function Home() {
               </ul>
               <Link
                 href="/register"
-                className="btn-firecrawl-orange w-full inline-flex items-center justify-center whitespace-nowrap rounded-[10px] text-sm font-medium transition-all duration-200 h-10 px-4"
+                className="btn-firecrawl-red w-full inline-flex items-center justify-center whitespace-nowrap rounded-[10px] text-sm font-medium transition-all duration-200 h-10 px-4"
               >
                 Start free trial
               </Link>
@@ -196,7 +196,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-12">
-              <Link href="/plans" className="text-orange-600 hover:text-orange-700 font-medium">
+              <Link href="/plans" className="text-red-600 hover:text-red-700 font-medium">
                 View detailed pricing →
               </Link>
             </div>
@@ -208,11 +208,11 @@ export default function Home() {
       {/* CTA Section 1 */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-[30px] p-16 text-center">
+          <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-[30px] p-16 text-center">
             <h2 className="text-4xl font-bold text-white mb-6">
               See How AI Models Rank Your Brand
             </h2>
-            <p className="text-xl text-orange-100 mb-8">
+            <p className="text-xl text-red-100 mb-8">
               Monitor your brand visibility across ChatGPT, Claude, Perplexity and more
             </p>
             <Link
@@ -389,7 +389,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/brand-monitor"
-              className="btn-firecrawl-orange inline-flex items-center justify-center whitespace-nowrap rounded-[10px] text-base font-medium transition-all duration-200 h-12 px-8"
+              className="btn-firecrawl-red inline-flex items-center justify-center whitespace-nowrap rounded-[10px] text-base font-medium transition-all duration-200 h-12 px-8"
             >
               Analyze Your Brand
             </Link>

@@ -243,7 +243,7 @@ export function CompanyCard({
                 {onAddCompetitor && (
                   <button
                     onClick={onAddCompetitor}
-                    className="h-10 px-4 rounded-[10px] text-sm font-medium flex items-center gap-1 transition-all duration-200 bg-orange-500 text-white hover:bg-orange-600 [box-shadow:inset_0px_-2.108433723449707px_0px_0px_#c2410c,_0px_1.2048193216323853px_6.325301647186279px_0px_rgba(234,_88,_12,_58%)] hover:translate-y-[1px] hover:scale-[0.98] hover:[box-shadow:inset_0px_-1px_0px_0px_#c2410c,_0px_1px_3px_0px_rgba(234,_88,_12,_40%)] active:translate-y-[2px] active:scale-[0.97] active:[box-shadow:inset_0px_1px_1px_0px_#c2410c,_0px_1px_2px_0px_rgba(234,_88,_12,_30%)]"
+                    className="h-10 px-4 rounded-[10px] text-sm font-medium flex items-center gap-1 transition-all duration-200 bg-red-500 text-white hover:bg-red-600 [box-shadow:inset_0px_-2.108433723449707px_0px_0px_#9f001e,_0px_1.2048193216323853px_6.325301647186279px_0px_rgba(228,_0,_43,_58%)] hover:translate-y-[1px] hover:scale-[0.98] hover:[box-shadow:inset_0px_-1px_0px_0px_#9f001e,_0px_1px_3px_0px_rgba(228,_0,_43,_40%)] active:translate-y-[2px] active:scale-[0.97] active:[box-shadow:inset_0px_1px_1px_0px_#9f001e,_0px_1px_2px_0px_rgba(228,_0,_43,_30%)]"
                   >
                     <Plus className="w-4 h-4" />
                     Add Competitor

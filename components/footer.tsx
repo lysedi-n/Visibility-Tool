@@ -10,8 +10,8 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="mb-4">
               <Image
-                src="/firecrawl-logo-with-fire.webp"
-                alt="Firecrawl"
+                src="/logo.svg"
+                alt="We Love SEO"
                 width={120}
                 height={25}
               />
@@ -111,7 +111,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-zinc-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm">
-              © {new Date().getFullYear()} Firecrawl. All rights reserved.
+              © {new Date().getFullYear()} We Love SEO. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-sm hover:text-zinc-900 transition-colors">

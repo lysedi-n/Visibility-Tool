@@ -25,7 +25,7 @@ export const auth = betterAuth({
               You requested to reset your password. Click the button below to create a new password.
             </p>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="${url}" style="background-color: #f97316; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">
+              <a href="${url}" style="background-color: #e4002b; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">
                 Reset Password
               </a>
             </div>
@@ -67,7 +67,7 @@ export const auth = betterAuth({
               Thanks for signing up! Please verify your email address by clicking the button below.
             </p>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="${url}" style="background-color: #f97316; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">
+              <a href="${url}" style="background-color: #e4002b; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block;">
                 Verify Email
               </a>
             </div>
