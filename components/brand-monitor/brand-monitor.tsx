@@ -119,8 +119,6 @@ export function BrandMonitor({
     showAddPromptModal,
     showAddCompetitorModal,
     newPromptText,
-    newCompetitorName,
-    newCompetitorUrl,
     scrapingCompetitors
   } = state;
   
@@ -468,9 +466,9 @@ export function BrandMonitor({
                 showCompetitors={showCompetitors}
                 identifiedCompetitors={identifiedCompetitors}
                 onRemoveCompetitor={(idx) => dispatch({ type: 'REMOVE_COMPETITOR', payload: idx })}
+                onClearCompetitors={() => dispatch({ type: 'CLEAR_COMPETITORS' })}
                 onAddCompetitor={() => {
                   dispatch({ type: 'TOGGLE_MODAL', payload: { modal: 'addCompetitor', show: true } });
-                  dispatch({ type: 'SET_NEW_COMPETITOR', payload: { name: '', url: '' } });
                 }}
                 onContinueToAnalysis={handleProceedToPrompts}
               />
@@ -642,33 +640,31 @@ export function BrandMonitor({
 
       <AddCompetitorModal
         isOpen={showAddCompetitorModal}
-        competitorName={newCompetitorName}
-        competitorUrl={newCompetitorUrl}
-        onNameChange={(name) => dispatch({ type: 'SET_NEW_COMPETITOR', payload: { name } })}
-        onUrlChange={(url) => dispatch({ type: 'SET_NEW_COMPETITOR', payload: { url } })}
-        onAdd={async () => {
-          if (newCompetitorName.trim()) {
-            const rawUrl = newCompetitorUrl.trim();
-            const validatedUrl = rawUrl ? validateCompetitorUrl(rawUrl) : undefined;
-            
-            const newCompetitor: IdentifiedCompetitor = {
-              name: newCompetitorName.trim(),
-              url: validatedUrl
-            };
-            
-            dispatch({ type: 'ADD_COMPETITOR', payload: newCompetitor });
-            dispatch({ type: 'TOGGLE_MODAL', payload: { modal: 'addCompetitor', show: false } });
-            dispatch({ type: 'SET_NEW_COMPETITOR', payload: { name: '', url: '' } });
-            
-            // Batch scrape and validate the new competitor if it has a URL
-            if (newCompetitor.url) {
-              await batchScrapeAndValidateCompetitors([newCompetitor]);
-            }
+        onAdd={async (competitors) => {
+          const newCompetitors: IdentifiedCompetitor[] = competitors.map((c) => ({
+            name: c.name.trim(),
+            url: c.url ? validateCompetitorUrl(c.url) : undefined
+          }));
+
+          newCompetitors.forEach((comp) =>
+            dispatch({ type: 'ADD_COMPETITOR', payload: comp })
+          );
+
+          dispatch({
+            type: 'TOGGLE_MODAL',
+            payload: { modal: 'addCompetitor', show: false }
+          });
+
+          const competitorsWithUrl = newCompetitors.filter((c) => c.url);
+          if (competitorsWithUrl.length) {
+            await batchScrapeAndValidateCompetitors(competitorsWithUrl);
           }
         }}
         onClose={() => {
-          dispatch({ type: 'TOGGLE_MODAL', payload: { modal: 'addCompetitor', show: false } });
-          dispatch({ type: 'SET_NEW_COMPETITOR', payload: { name: '', url: '' } });
+          dispatch({
+            type: 'TOGGLE_MODAL',
+            payload: { modal: 'addCompetitor', show: false }
+          });
         }}
       />
     </div>

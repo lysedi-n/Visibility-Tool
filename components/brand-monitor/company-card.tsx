@@ -25,6 +25,7 @@ interface CompanyCardProps {
   }>;
   onRemoveCompetitor?: (index: number) => void;
   onAddCompetitor?: () => void;
+  onClearCompetitors?: () => void;
   onContinueToAnalysis?: () => void;
 }
 
@@ -36,7 +37,8 @@ export function CompanyCard({
   identifiedCompetitors = [],
   onRemoveCompetitor,
   onAddCompetitor,
-  onContinueToAnalysis 
+  onClearCompetitors,
+  onContinueToAnalysis
 }: CompanyCardProps) {
   const [logoError, setLogoError] = React.useState(false);
   const [faviconError, setFaviconError] = React.useState(false);
@@ -163,11 +165,19 @@ export function CompanyCard({
       {showCompetitors && identifiedCompetitors.length > 0 && (
         <div className="border-t border-gray-200">
           <div className="px-8 py-6">
-            <div className="mb-4">
+            <div className="mb-4 flex items-center justify-between">
               <div>
                 <h3 className="text-sm font-medium text-gray-900">Competitors</h3>
                 <p className="text-sm text-gray-500">We'll compare {company.name} against these {identifiedCompetitors.length} competitors</p>
               </div>
+              {onClearCompetitors && (
+                <button
+                  onClick={onClearCompetitors}
+                  className="text-sm text-red-600 hover:underline"
+                >
+                  Clear all
+                </button>
+              )}
             </div>
               
               <div className="grid grid-cols-3 gap-4">
