@@ -20,6 +20,7 @@ export type BrandMonitorAction =
   | { type: 'SET_IDENTIFIED_COMPETITORS'; payload: IdentifiedCompetitor[] }
   | { type: 'REMOVE_COMPETITOR'; payload: number }
   | { type: 'ADD_COMPETITOR'; payload: IdentifiedCompetitor }
+  | { type: 'CLEAR_COMPETITORS' }
   | { type: 'UPDATE_COMPETITOR_METADATA'; payload: { index: number; metadata: CompetitorMetadata } }
   | { type: 'SET_ANALYSIS_PROGRESS'; payload: AnalysisProgressState }
   | { type: 'UPDATE_ANALYSIS_PROGRESS'; payload: Partial<AnalysisProgressState> }
@@ -33,7 +34,6 @@ export type BrandMonitorAction =
   | { type: 'SET_EXPANDED_PROMPT_INDEX'; payload: number | null }
   | { type: 'TOGGLE_MODAL'; payload: { modal: 'addPrompt' | 'addCompetitor'; show: boolean } }
   | { type: 'SET_NEW_PROMPT_TEXT'; payload: string }
-  | { type: 'SET_NEW_COMPETITOR'; payload: { name?: string; url?: string } }
   | { type: 'RESET_STATE' }
   | { type: 'SCRAPE_SUCCESS'; payload: Company }
   | { type: 'ANALYSIS_COMPLETE'; payload: Analysis };
@@ -153,8 +153,6 @@ export interface BrandMonitorState {
   showAddPromptModal: boolean;
   showAddCompetitorModal: boolean;
   newPromptText: string;
-  newCompetitorName: string;
-  newCompetitorUrl: string;
 }
 
 // Initial State
@@ -193,9 +191,7 @@ export const initialBrandMonitorState: BrandMonitorState = {
   currentPeriod: true,
   showAddPromptModal: false,
   showAddCompetitorModal: false,
-  newPromptText: '',
-  newCompetitorName: '',
-  newCompetitorUrl: ''
+  newPromptText: ''
 };
 
 // Reducer
@@ -259,9 +255,15 @@ export function brandMonitorReducer(
       };
       
     case 'ADD_COMPETITOR':
-      return { 
-        ...state, 
-        identifiedCompetitors: [...state.identifiedCompetitors, action.payload] 
+      return {
+        ...state,
+        identifiedCompetitors: [...state.identifiedCompetitors, action.payload]
+      };
+
+    case 'CLEAR_COMPETITORS':
+      return {
+        ...state,
+        identifiedCompetitors: []
       };
       
     case 'UPDATE_COMPETITOR_METADATA':
@@ -333,13 +335,6 @@ export function brandMonitorReducer(
       
     case 'SET_NEW_PROMPT_TEXT':
       return { ...state, newPromptText: action.payload };
-      
-    case 'SET_NEW_COMPETITOR':
-      return {
-        ...state,
-        ...(action.payload.name !== undefined && { newCompetitorName: action.payload.name }),
-        ...(action.payload.url !== undefined && { newCompetitorUrl: action.payload.url })
-      };
       
     case 'RESET_STATE':
       return initialBrandMonitorState;
